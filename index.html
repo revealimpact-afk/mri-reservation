@@ -496,6 +496,11 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
   .phone::before{display:none;}
   .sb-bar{height:52px;min-height:52px;}
 }
+
+/* ═══ PRODUCTION — retrait du chrome de prototype ═══ */
+.ph,.sw{display:none!important;}
+.sb-t,.sb-i{display:none!important;}
+.sb-bar{height:env(safe-area-inset-top,0px)!important;min-height:0!important;padding:0!important;background:var(--bg)!important;}
 </style>
 </head>
 <body>
@@ -761,7 +766,7 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
 
     <!-- ═══ MON ESPACE ═══ -->
     <div class="screen" id="s-espace">
-      <div class="esp-hdr"><div class="esp-gr">Mon Espace Client ✦</div><div class="esp-n">Bonjour, Laureen</div></div>
+      <div class="esp-hdr"><div class="esp-gr">Mon Espace Client ✦</div><div class="esp-n">Bienvenue</div></div>
       <div class="sc">
         <div class="proj-card">
           <div class="pc-t"><div><h4>Doux Murmure™</h4><div class="pc-ev">14 Août 2026 · Guadeloupe</div></div><div class="pc-st">EN COURS</div></div>
@@ -770,7 +775,7 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
         </div>
         <div style="padding:14px 20px 4px;"><span class="ey g">Timeline de mon projet</span></div>
         <div class="tl-item"><div class="ti-in"><div class="ti-d done">✓</div><div class="ti-ln"></div></div><div class="ti-co done"><strong>Demande reçue</strong><p>25 Juin 2026 · Confirmée</p></div></div>
-        <div class="tl-item"><div class="ti-in"><div class="ti-d done">✓</div><div class="ti-ln"></div></div><div class="ti-co done"><strong>Consultation téléphonique</strong><p>26 Juin · 30 min avec Laureen</p></div></div>
+        <div class="tl-item"><div class="ti-in"><div class="ti-d done">✓</div><div class="ti-ln"></div></div><div class="ti-co done"><strong>Consultation téléphonique</strong><p>26 Juin · 30 min de consultation</p></div></div>
         <div class="tl-item"><div class="ti-in"><div class="ti-d act">✦</div><div class="ti-ln"></div></div><div class="ti-co"><strong>Devis à valider</strong><p>1 200€ · Avant le 5 Juillet</p></div></div>
         <div class="tl-item"><div class="ti-in"><div class="ti-d pen">4</div><div class="ti-ln"></div></div><div class="ti-co pen"><strong>Réservation confirmée</strong><p>Après validation du devis</p></div></div>
         <div class="tl-item"><div class="ti-in"><div class="ti-d pen">5</div></div><div class="ti-co pen"><strong>Jour J · 14 Août</strong><p>L'équipe MRI installe la scénographie</p></div></div>
