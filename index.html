@@ -517,6 +517,13 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
 .co-nm{font-family:'Cinzel',serif;font-size:13px;color:var(--dark);}
 .co-sub{font-size:9px;color:var(--muted);margin-top:2px;}
 .co-pr{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--gd);}
+
+/* --- DESKTOP ADAPTATIF : grand panneau au lieu d'un petit téléphone (mobile inchangé) --- */
+@media (min-width:501px){
+  body{justify-content:center;min-height:100vh;padding:14px;}
+  .phone{width:min(620px,94vw);height:min(96vh,980px);border-radius:32px;}
+  .phone::before{display:none;}
+}
 </style>
 </head>
 <body>
