@@ -1481,7 +1481,15 @@ initTheme();
     try { await window._sb.auth.resetPasswordForEmail(email, { redirectTo: location.href.split("#")[0] }); setMsg("✦ E-mail de réinitialisation envoyé.", true); }
     catch (err) { setMsg("Erreur : " + err.message, false); }
   };
-  window.mriOAuth = function (provider) { var el = document.getElementById("mri-soon"); if (el) el.style.display = "flex"; };
+  window.mriOAuth = async function (provider) {
+    if (provider === "google") {
+      try { var r = await window._sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.href.split("#")[0].split("?")[0] } }); if (r && r.error) { var e0 = document.getElementById("mri-soon"); if (e0) e0.style.display = "flex"; } }
+      catch (e) { var e1 = document.getElementById("mri-soon"); if (e1) e1.style.display = "flex"; }
+      return;
+    }
+    var el = document.getElementById("mri-soon"); if (el) el.style.display = "flex";
+  };
+  try { window._sb.auth.onAuthStateChange(function (evt) { if (evt === "SIGNED_IN") { var sp = document.getElementById("s-splash"), rg = document.getElementById("s-register"), lg = document.getElementById("s-login"); if ((sp && sp.classList.contains("act")) || (rg && rg.classList.contains("act")) || (lg && lg.classList.contains("act"))) { gt("s-home", "home"); } } }); } catch (e) {}
   setTimeout(async function () { try { var s = await window._sb.auth.getSession(); var sp = document.getElementById("s-splash"); if (s.data && s.data.session && sp && sp.classList.contains("act")) { gt("s-home", "home"); } } catch (e) {} }, 700);
   window._COF = {couple:{n:"L'Écrin Couple™",p:64,link:"https://buy.stripe.com/bJe28s85t5nXcdeg2uaAw09"},mariage:{n:"L'Écrin Mariage™",p:74,link:"https://buy.stripe.com/aFa4gAclJ5nXa564jMaAw08"},sororite:{n:"L'Écrin Sororité™",p:59,link:"https://buy.stripe.com/4gM14o0D14jT4KM5nQaAw07"},famille:{n:"L'Écrin Famille™",p:59,link:"https://buy.stripe.com/28E3cw0D18A95OQeYqaAw06"},entreprise:{n:"L'Écrin Entreprise™",p:79,link:"https://buy.stripe.com/cNieVedpNbMl6SU7vYaAw05"}};
   window._selectedProduct = null;
