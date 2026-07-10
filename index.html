@@ -1483,7 +1483,7 @@ initTheme();
   };
   window.mriOAuth = function (provider) { var el = document.getElementById("mri-soon"); if (el) el.style.display = "flex"; };
   setTimeout(async function () { try { var s = await window._sb.auth.getSession(); var sp = document.getElementById("s-splash"); if (s.data && s.data.session && sp && sp.classList.contains("act")) { gt("s-home", "home"); } } catch (e) {} }, 700);
-  window._COF = {couple:{n:"L'Écrin Couple™",p:64},mariage:{n:"L'Écrin Mariage™",p:74},sororite:{n:"L'Écrin Sororité™",p:59},famille:{n:"L'Écrin Famille™",p:59},entreprise:{n:"L'Écrin Entreprise™",p:79}};
+  window._COF = {couple:{n:"L'Écrin Couple™",p:64,link:"https://buy.stripe.com/bJe28s85t5nXcdeg2uaAw09"},mariage:{n:"L'Écrin Mariage™",p:74,link:"https://buy.stripe.com/aFa4gAclJ5nXa564jMaAw08"},sororite:{n:"L'Écrin Sororité™",p:59,link:"https://buy.stripe.com/4gM14o0D14jT4KM5nQaAw07"},famille:{n:"L'Écrin Famille™",p:59,link:"https://buy.stripe.com/28E3cw0D18A95OQeYqaAw06"},entreprise:{n:"L'Écrin Entreprise™",p:79,link:"https://buy.stripe.com/cNieVedpNbMl6SU7vYaAw05"}};
   window._selectedProduct = null;
   window.mriSelect = function (key) {
     var c = window._COF[key]; if (!c) return;
@@ -1495,18 +1495,18 @@ initTheme();
     var p = document.getElementById("co-promo"); if (p) p.value = "";
     gt("s-checkout", "lecrin");
   };
-  window.mriPay = function () {
+  window.mriPay = function () { var s = window._selectedProduct; if (s && s.link) { window.location.href = s.link; return; }
     var m = document.getElementById("co-msg");
     if (m) { m.style.color = "var(--gd)"; m.textContent = "\u2726 Le paiement sécurisé sera activé très prochainement. Votre sélection est bien notée."; }
   };
   window._ABO = {
-    spiral: { n: "L'Écrin Spiral™", p: "45€", per: " /mois", sub: "Abonnement mensuel · sans engagement" },
-    eclatm: { n: "MRI Éclat™ Mensuel", p: "34€", per: " /mois", sub: "Abonnement mensuel · soit 408€/an" },
-    eclata: { n: "MRI Éclat™ Annuel", p: "320€", per: " /an", sub: "Abonnement annuel · économisez 88€" }
+    spiral: { n: "L'Écrin Spiral™", p: "45€", per: " /mois", sub: "Abonnement mensuel · sans engagement", link: "https://buy.stripe.com/cNi5kE71pg2B1yAg2uaAw04" },
+    eclatm: { n: "MRI Éclat™ Mensuel", p: "34€", per: " /mois", sub: "Abonnement mensuel · soit 408€/an", link: "https://buy.stripe.com/eVq4gA71p17H2CE8A2aAw03" },
+    eclata: { n: "MRI Éclat™ Annuel", p: "320€", per: " /an", sub: "Abonnement annuel · économisez 88€", link: "https://buy.stripe.com/9B63cw2L917Helm17AaAw02" }
   };
   window.selectAbonnement = function (key) {
     var a = window._ABO[key]; if (!a) return;
-    window._selectedProduct = { nom: a.n, prix: a.p, type: "abonnement" };
+    window._selectedProduct = { nom: a.n, prix: a.p, type: "abonnement", link: a.link };
     var rec = document.getElementById("co-recap");
     if (rec) rec.innerHTML = '<div><div class="co-nm">' + a.n + '</div><div class="co-sub">' + a.sub + '</div></div><div class="co-pr">' + a.p + '<small style="font-size:11px;font-style:normal;color:var(--muted);">' + a.per + '</small></div>';
     var t = document.getElementById("co-total"); if (t) t.textContent = a.p + a.per;
