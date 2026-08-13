@@ -663,14 +663,14 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
         </div>
 
         <!-- Catégories -->
-        <div class="section-hd"><h3>Nos Univers</h3><a onclick="gt('s-services','services')">Voir tout</a></div>
+        <div class="section-hd"><h3>Nos Univers</h3><a onclick="goUnivers(null)">Voir tout</a></div>
         <div class="cat-grid">
-          <div class="cat-tile touch-glow" onclick="gt('s-detail-anniversaire','services')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Cérémonies<br>Familiales</div><div class="ct-s">Anniversaires · Baptêmes</div></div></div>
-          <div class="cat-tile touch-glow" onclick="gt('s-detail-demande-mariage','services')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Expériences<br>Couple</div><div class="ct-s">Demandes · Anniversaires</div></div></div>
-          <div class="cat-tile touch-glow" onclick="gt('s-detail-doux-murmure','services')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Soirées<br>Romantiques</div><div class="ct-s">Doux Murmure™</div></div></div>
-          <div class="cat-tile touch-glow" onclick="gt('s-detail-prive','services')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Événements<br>Privés</div><div class="ct-s">EVJF · Soirées d'exception</div></div></div>
-          <div class="cat-tile touch-glow" onclick="gt('s-detail-gala','services')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Corporate<br>& Pro</div><div class="ct-s">Galas · Team Building</div></div></div>
-          <div class="cat-tile touch-glow" onclick="gt('s-detail-mater-lumina','services')" style="display:none"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Expériences<br>Saisonnières</div><div class="ct-s">Mater Lumina™</div></div></div>
+          <div class="cat-tile touch-glow" onclick="goUnivers('famille')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Cérémonies<br>Familiales</div><div class="ct-s">Baptême · Communion · Noces d'or</div></div></div>
+          <div class="cat-tile touch-glow" onclick="goUnivers('couple')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Expériences<br>Couple</div><div class="ct-s">Mariage · Demande · Renouvellement</div></div></div>
+          <div class="cat-tile touch-glow" onclick="goUnivers('romantique')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Soirées<br>Romantiques</div><div class="ct-s">Dîner à deux · Villa · Saint-Valentin</div></div></div>
+          <div class="cat-tile touch-glow" onclick="goUnivers('prive')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Événements<br>Privés</div><div class="ct-s">Retrouvailles · Villa privée · Naissance</div></div></div>
+          <div class="cat-tile touch-glow" onclick="goUnivers('pro')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Corporate<br>& Pro</div><div class="ct-s">Séminaire · Vœux officiels · Lancement</div></div></div>
+          <div class="cat-tile touch-glow" onclick="goUnivers('saisonnier')" style="display:none"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Expériences<br>Saisonnières</div><div class="ct-s">Mater Lumina™</div></div></div>
         </div>
 
         <!-- Modules -->
@@ -707,14 +707,27 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
     <!-- ═══ SERVICES ═══ -->
     <div class="screen" id="s-services">
       <div class="top-bar"><div class="back" onclick="goBack()">←</div><div class="tbt">Nos Services</div></div>
-      <div class="sl-hdr"><div class="sl-t">Toutes nos Expériences</div><div class="sl-c">12 expériences disponibles</div></div>
+      <div class="sl-hdr"><div class="sl-t" id="srv-title">Toutes nos Expériences</div><div class="sl-c"><span id="srv-count">6 expériences disponibles</span><span id="srv-all" onclick="srvFilter(null)" style="display:none;margin-left:10px;color:var(--gd);cursor:pointer;text-decoration:underline;">Tout voir</span></div></div>
       <div class="sc">
-        <div class="sic touch-glow" onclick="gt('s-detail-doux-murmure','services')"><div class="sic-b"><h4>Doux Murmure™</h4><p>Scénographie sensorielle pour deux. Table d'exception, lumières féeriques.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Romantique</span></div></div><span class="sic-arr">›</span></div>
-        <div class="sic touch-glow" onclick="gt('s-detail-demande-mariage','services')"><div class="sic-b"><h4>Demande en Mariage</h4><p>La scénographie parfaite pour un OUI inoubliable. Sur mesure absolu.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Couple</span></div></div><span class="sic-arr">›</span></div>
-        <div class="sic touch-glow" onclick="gt('s-detail-anniversaire','services')"><div class="sic-b"><h4>Anniversaire Prestige</h4><p>40, 50, 60 ans — chaque âge mérite une célébration à sa mesure.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Famille</span></div></div><span class="sic-arr">›</span></div>
-        <div class="sic touch-glow" onclick="gt('s-detail-gala','services')"><div class="sic-b"><h4>Gala d'Entreprise</h4><p>L'excellence MRI au service de votre image professionnelle.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Pro</span></div></div><span class="sic-arr">›</span></div>
-        <div class="sic touch-glow" onclick="gt('s-detail-mater-lumina','services')" style="display:none"><div class="sic-b"><h4>Mater Lumina™</h4><p>L'expérience ultime pour célébrer votre maman. Un moment hors du temps.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Saisonnier</span></div></div><span class="sic-arr">›</span></div>
-        <div class="sic touch-glow" onclick="gt('s-detail-prive','services')"><div class="sic-b"><h4>Événement Privé</h4><p>EVJF, Bridal Shower, soirée d'exception — votre vision, notre scénographie.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Exclusif</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="couple romantique" onclick="gt('s-detail-doux-murmure','services')"><div class="sic-b"><h4>Doux Murmure™</h4><p>Scénographie sensorielle pour deux. Table d'exception, lumières féeriques.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Romantique</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="couple" onclick="gt('s-detail-demande-mariage','services')"><div class="sic-b"><h4>Demande en Mariage</h4><p>La scénographie parfaite pour un OUI inoubliable. Sur mesure absolu.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Couple</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="famille" onclick="gt('s-detail-anniversaire','services')"><div class="sic-b"><h4>Anniversaire Prestige</h4><p>40, 50, 60 ans — chaque âge mérite une célébration à sa mesure.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Famille</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="pro" onclick="gt('s-detail-gala','services')"><div class="sic-b"><h4>Gala d'Entreprise</h4><p>L'excellence MRI au service de votre image professionnelle.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Pro</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="famille saisonnier" data-hidden="1" onclick="gt('s-detail-mater-lumina','services')" style="display:none"><div class="sic-b"><h4>Mater Lumina™</h4><p>L'expérience ultime pour célébrer votre maman. Un moment hors du temps.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Saisonnier</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="prive" onclick="gt('s-detail-prive','services')"><div class="sic-b"><h4>Événement Privé</h4><p>EVJF, Bridal Shower, soirée d'exception — votre vision, notre scénographie.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Exclusif</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="famille" onclick="gt('s-detail-bapteme-premiere-lumiere','services')"><div class="sic-b"><h4>Première Lumière</h4><p>Le baptême de votre enfant prolongé par une réception scénographiée, où la blancheur et la lumière disent la joie.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Sacrement</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="famille" onclick="gt('s-detail-communion-confirmation','services')"><div class="sic-b"><h4>Le Grand Oui</h4><p>Première communion ou confirmation : une réception élégante qui donne à ce oui personnel la solennité qu'il mérite.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Transmission</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="famille couple" onclick="gt('s-detail-noces-or-fidelite','services')"><div class="sic-b"><h4>Or et Fidélité</h4><p>Noces d'or ou anniversaire de mariage : une célébration qui raconte des décennies de fidélité devant toute la famille.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Fidélité</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="pro" onclick="gt('s-detail-seminaire-convention','services')"><div class="sic-b"><h4>Séminaire & Convention</h4><p>Une convention pensée comme une expérience : scénographie, lumière et parcours au service de vos messages.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Entreprise</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="pro" onclick="gt('s-detail-ceremonie-officielle-voeux','services')"><div class="sic-b"><h4>Cérémonie & Vœux</h4><p>Vœux, remises de distinction, cérémonies protocolaires : la solennité mise en scène avec justesse.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Institution</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="pro" onclick="gt('s-detail-inauguration-lancement','services')"><div class="sic-b"><h4>Inauguration & Lancement</h4><p>Ouverture de lieu ou lancement de marque : un premier regard qui installe durablement votre signature.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Marque</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="couple" onclick="gt('s-detail-mariage-signature','services')"><div class="sic-b"><h4>Mariage Signature</h4><p>La scénographie complète de votre mariage : direction artistique, décor, lumière et coordination du jour J.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Mariage</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="couple romantique" onclick="gt('s-detail-renouvellement-voeux','services')"><div class="sic-b"><h4>Renouvellement de Vœux</h4><p>Une cérémonie intime pour redire oui, scénographiée devant les vôtres, des années après la promesse.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Vœux</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="romantique couple" onclick="gt('s-detail-escapade-villa','services')"><div class="sic-b"><h4>Escapade Suspendue</h4><p>Une nuit à deux dans une villa privée, scénographiée de votre arrivée au petit matin, pensée pour vous seuls.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Villa</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="romantique couple" onclick="gt('s-detail-saint-valentin','services')"><div class="sic-b"><h4>Saint-Valentin Signature</h4><p>Notre édition du 14 février : un décor signature, une soirée à deux orchestrée de bout en bout.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Saisonnier</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="prive famille" onclick="gt('s-detail-grandes-retrouvailles','services')"><div class="sic-b"><h4>Les Grandes Retrouvailles</h4><p>Une réception de famille pensée pour ceux qui reviennent au pays et pour ceux qui les attendaient.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Famille</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="prive" onclick="gt('s-detail-villa-confidentielle','services')"><div class="sic-b"><h4>Villa Confidentielle</h4><p>Une réception privée dans une villa choisie avec vous, orchestrée du premier accueil à la dernière lumière.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Villa</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="prive famille" onclick="gt('s-detail-douce-attente','services')"><div class="sic-b"><h4>La Douce Attente</h4><p>Une réception raffinée pour accueillir l'enfant à venir et honorer celle qui s'apprête à devenir mère.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Naissance</span></div></div><span class="sic-arr">›</span></div>
         <div style="height:12px;"></div>
       </div>
     </div>
@@ -845,7 +858,319 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
         </div>
       </div>
     </div>
-    <div class="screen" id="s-ecrin-couple">
+        <div class="screen" id="s-detail-bapteme-premiere-lumiere">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Baptême · Célébration sacramentelle</div><div class="dh-ti">Première <em>Lumière</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">30–120 pers.</div><div class="mc">Demi-journée</div><div class="mc">Lieu au choix</div></div>
+          <div class="d-desc">« Vous avez porté cet enfant jusqu'à l'eau du baptême. Nous préparons autour de lui un jour de blancheur et de lumière, dont votre famille se souviendra. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception et direction artistique de la journée, palette de blancs et de dorés arrêtée avec vous</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie de la réception : table d'honneur, décor floral, chemin de bougies et lanternes</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Papeterie sur mesure et espace photo : faire-part, livret, fond décoré et accessoires</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination des prestataires et conduite du déroulé, de la sortie de l'église au dessert</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-communion-confirmation">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Communion et confirmation · Sacrement</div><div class="dh-ti">Le Grand <em>Oui</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">25–100 pers.</div><div class="mc">Journée</div><div class="mc">Domicile ou salle</div></div>
+          <div class="d-desc">« Ce jour-là, votre enfant répond pour lui-même. Nous dressons autour de ce oui une table, une lumière et un décor dignes de ce qu'il engage. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception et direction artistique de la réception, accordées aux couleurs de la célébration</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Décor de la table d'honneur et des tables d'invités, compositions florales et bougies</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Éclairage d'ambiance de la salle ou du jardin, guirlandes, lanternes et mise en lumière du soir</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Papeterie, signalétique d'accueil, espace photo et coordination du déroulé le jour même</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-noces-or-fidelite">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Noces d'or · Anniversaire de mariage</div><div class="dh-ti">Or et <em>Fidélité</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">40–150 pers.</div><div class="mc">Journée</div><div class="mc">Lieu au choix</div></div>
+          <div class="d-desc">« Ce que vous avez bâti ne tient pas dans un discours. Nous lui donnons un décor, une lumière et un parcours, pour que toute la famille le regarde. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception du parcours de soirée et direction artistique, des retrouvailles au dernier toast</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie et décor de salle : mise en scène de la table d'honneur, fleurs et bougies</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Mur mémoire et espace photo : accrochage des portraits de famille, cadres et signalétique</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Éclairage d'ambiance et coordination de tous les prestataires le jour de la célébration</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-seminaire-convention">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Corporate · Immersif</div><div class="dh-ti">Séminaire & <em>Convention</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">50–400 pers.</div><div class="mc">1 à 3 jours</div><div class="mc">Hôtel ou villa</div></div>
+          <div class="d-desc">« Vos équipes entrent dans une salle. Elles en ressortent avec une direction commune, et le souvenir précis du moment où vous la leur avez confiée. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Direction artistique du séminaire, déclinée sur l'ensemble des espaces</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie de la salle plénière : scène, fonds, mobilier, décor</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Éclairage d'ambiance et mise en lumière des temps forts du programme</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Signalétique, papeterie et coordination des prestataires sur toute la durée</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-ceremonie-officielle-voeux">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Institutionnel · Protocole</div><div class="dh-ti">Cérémonie & <em>Vœux</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">80–600 pers.</div><div class="mc">Soirée</div><div class="mc">Lieu institutionnel</div></div>
+          <div class="d-desc">« Certaines paroles engagent une institution, une équipe, une année entière. Nous composons le cadre qui donne aux vôtres toute leur portée. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception de la cérémonie et scénographie de la tribune officielle</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Mise en lumière de la salle et des espaces d'accueil des invités</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Signalétique protocolaire, plans de placement et papeterie officielle</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination du déroulé, des prestataires et du jour J avec vos équipes</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-inauguration-lancement">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Lancement · Signature</div><div class="dh-ti">Inauguration & <em>Lancement</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">40–300 pers.</div><div class="mc">Demi-journée</div><div class="mc">Votre lieu</div></div>
+          <div class="d-desc">« On n'inaugure qu'une fois. Nous faisons de ce premier rendez-vous la référence à laquelle vos invités compareront tous les suivants. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Direction artistique du lancement et traduction de votre identité de marque</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie du lieu : parcours d'accueil, décor et mise en valeur de vos produits</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Éclairage d'ambiance et espace photo dédié à vos prises de vue presse</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Papeterie, signalétique et coordination des prestataires le jour J</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-mariage-signature">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Mariage · Scénographie intégrale</div><div class="dh-ti">Mariage <em>Signature</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">50–250 pers.</div><div class="mc">Journée entière</div><div class="mc">Lieu au choix</div></div>
+          <div class="d-desc">« Le jour de vos noces, chaque table, chaque lumière raconte déjà quelque chose de vous. Le décor n'accompagne pas la promesse : il la prolonge. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Direction artistique complète : intention, palette, matières et planches de style</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie de la cérémonie et de la réception : décor, mobilier, fleurs, mise en scène</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Mise en lumière des espaces : bougies, lanternes et éclairage d'ambiance</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination des prestataires et pilotage du jour J, de l'installation au démontage</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-renouvellement-voeux">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Cérémonie · Promesse renouvelée</div><div class="dh-ti">Renouvellement <em>de Vœux</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">2–80 pers.</div><div class="mc">Demi-journée</div><div class="mc">Lieu au choix</div></div>
+          <div class="d-desc">« Après les années, les épreuves et les joies partagées, vous choisissez de redire oui. Nous donnons à cette parole le décor qu'elle mérite. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception du déroulé et de la mise en scène de la cérémonie avec vous</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie de l'espace de cérémonie : arche, allée, assises, décor floral</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Papeterie sur mesure : invitations, livret de cérémonie, signalétique et marque-places</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Espace photo scénographié et coordination des prestataires le jour même</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-escapade-villa">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Escapade · Nuit en villa privée</div><div class="dh-ti">Escapade <em>Suspendue</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">2 personnes</div><div class="mc">1 nuit</div><div class="mc">Villa privée</div></div>
+          <div class="d-desc">« Vous poussez la porte, et tout est déjà là : la lumière basse, le parfum du linge, le silence qui vous appartient. Le monde attendra demain. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception et direction artistique de la nuit, du seuil au petit matin</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie de la chambre, de la terrasse et de la table du matin</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Éclairage d'ambiance sur mesure : bougies, lanternes, chemin de lumière</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Papeterie manuscrite et coordination complète avec la villa partenaire</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-saint-valentin">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">14 février · Édition limitée</div><div class="dh-ti">Saint-Valentin <em>Signature</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">2 personnes</div><div class="mc">Soirée</div><div class="mc">Lieu partenaire</div></div>
+          <div class="d-desc">« Un soir par an, tout se tait autour de vous : la table, la lumière, la musique. Il ne reste que vous deux, et la soirée devant vous. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Direction artistique de l'édition annuelle, déclinée à votre couple</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Décor complet : table dressée, fleurs, textiles et chemin d'arrivée</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Mise en lumière du lieu : bougies, lanternes, halo tamisé sur la table</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination des prestataires et présence discrète le soir même</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-grandes-retrouvailles">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Réunion de famille · Retour au pays</div><div class="dh-ti">Les Grandes <em>Retrouvailles</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">30–120 pers.</div><div class="mc">Journée</div><div class="mc">Villa ou jardin</div></div>
+          <div class="d-desc">« Ils arrivent de loin, les uns après les autres, et la maison se remplit de voix. Vous n'aurez rien à organiser : seulement à les serrer dans vos bras. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception et direction artistique de la réception, du décor à la palette</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie des espaces : table d'honneur, assises, fleurs et textiles</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Espace photo signé : fond décoratif, accessoires et éclairage soigné</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination des prestataires et conduite du déroulé le jour même</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-villa-confidentielle">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Réception privée · Cercle restreint</div><div class="dh-ti">Villa <em>Confidentielle</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">20–80 pers.</div><div class="mc">Soirée</div><div class="mc">Villa privée</div></div>
+          <div class="d-desc">« Une adresse que l'on ne partage qu'à quelques-uns. Un portail qui se referme, et la soirée vous appartient jusqu'à la dernière bougie. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Repérage de la villa et plan d'implantation des espaces de réception</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie du salon, de la terrasse et des abords de piscine</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Éclairage d'ambiance : lanternes, bougies et sources indirectes</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination des prestataires et direction du déroulé de la soirée</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-douce-attente">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Baby shower · Avant la naissance</div><div class="dh-ti">La Douce <em>Attente</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">20–60 pers.</div><div class="mc">Après-midi</div><div class="mc">Villa ou jardin</div></div>
+          <div class="d-desc">« Avant les nuits courtes et les premiers sourires, il y a cet après-midi-là : celui où l'on célèbre celle que vous devenez, entourée des vôtres. »</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Direction artistique complète : palette, matières et fil conducteur</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie du salon d'accueil, de la table et du coin cadeaux</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Papeterie assortie : menus, marque-places et panneau de bienvenue</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Espace photo et coordination des prestataires le jour de la réception</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="gt('s-brief','brief')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+<div class="screen" id="s-ecrin-couple">
       <div class="top-bar"><div class="back" onclick="goBack()">&larr;</div><div class="tbt">L'Écrin Couple™</div></div>
       <div class="sc" style="padding:0 0 28px;">
         <div style="height:118px;background:linear-gradient(135deg,#D490A8 0%,rgba(0,0,0,0.15) 120%);display:flex;align-items:flex-end;padding:16px 20px;">
@@ -1147,7 +1472,7 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
   <!-- BOTTOM NAV -->
   <div class="bnav">
     <div class="bni act" id="bn-home" onclick="gt('s-home','home')"><span class="bn-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11.5 12 4l8.5 7.5"/><path d="M5.5 10v8.5a1 1 0 0 0 1 1H9.5v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h3a1 1 0 0 0 1-1V10"/></svg></span><span class="bn-lb">Accueil</span></div>
-    <div class="bni" id="bn-services" onclick="gt('s-services','services')"><span class="bn-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.6 3 2 5.3 4.5 6.5-2.5 1.2-3.9 3.5-4.5 6.5-.6-3-2-5.3-4.5-6.5C10 8.8 11.4 6.5 12 3.5Z"/><path d="M19 14.5c.3 1.3.9 2.2 2 2.8-1.1.6-1.7 1.5-2 2.8-.3-1.3-.9-2.2-2-2.8 1.1-.6 1.7-1.5 2-2.8Z"/></svg></span><span class="bn-lb">Services</span></div>
+    <div class="bni" id="bn-services" onclick="goUnivers(null)"><span class="bn-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.6 3 2 5.3 4.5 6.5-2.5 1.2-3.9 3.5-4.5 6.5-.6-3-2-5.3-4.5-6.5C10 8.8 11.4 6.5 12 3.5Z"/><path d="M19 14.5c.3 1.3.9 2.2 2 2.8-1.1.6-1.7 1.5-2 2.8-.3-1.3-.9-2.2-2-2.8 1.1-.6 1.7-1.5 2-2.8Z"/></svg></span><span class="bn-lb">Services</span></div>
     <div class="bni" id="bn-lecrin" onclick="gt('s-lecrin','lecrin')" style="display:none"><span class="bn-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10l3.5 5L12 21 3.5 9 7 4Z"/><path d="M3.5 9h17M9 4l-1.8 5L12 21l4.8-12L15 4"/></svg></span><span class="bn-lb">L'Écrin</span></div>
     <div class="bni" id="bn-brief" onclick="gt('s-brief','brief')"><span class="bn-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4.5 19 9l-9 9-5 1 1-5 8.5-9.5Z"/><path d="M13 6.5 17 10.5"/></svg></span><span class="bn-lb">Mon Projet</span></div>
     <div class="bni" id="bn-espace" onclick="gt('s-espace','espace')"><span class="bn-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20c1-3.6 4-5.8 7.2-5.8s6.2 2.2 7.2 5.8"/></svg></span><span class="bn-lb">Mon Espace</span></div>
@@ -1161,8 +1486,39 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
 ═══════════════════════════════════════ */
 let cur='s-splash';
 let navStack=[];
+
+/* --- Filtrage des services par univers (accueil -> liste filtree) --- */
+var SRV_UNIVERS = {
+  famille:    'Cérémonies Familiales',
+  couple:     'Expériences Couple',
+  romantique: 'Soirées Romantiques',
+  prive:      'Événements Privés',
+  pro:        'Corporate & Pro',
+  saisonnier: 'Expériences Saisonnières'
+};
+function srvFilter(cat){
+  var cards = document.querySelectorAll('#s-services .sic');
+  var n = 0;
+  for (var i=0;i<cards.length;i++){
+    var c = cards[i];
+    if (c.getAttribute('data-hidden') === '1') { c.style.display='none'; continue; }
+    var cats = (c.getAttribute('data-cat')||'').split(/\s+/);
+    var show = !cat || cats.indexOf(cat) !== -1;
+    c.style.display = show ? '' : 'none';
+    if (show) n++;
+  }
+  var t = document.getElementById('srv-title');
+  var k = document.getElementById('srv-count');
+  var a = document.getElementById('srv-all');
+  if (t) t.textContent = cat ? (SRV_UNIVERS[cat]||'Nos Expériences') : 'Toutes nos Expériences';
+  if (k) k.textContent = n + (n>1 ? ' expériences disponibles' : ' expérience disponible');
+  if (a) a.style.display = cat ? 'inline' : 'none';
+  var sc = document.getElementById('s-services');
+  if (sc) sc.scrollTop = 0;
+}
+function goUnivers(cat){ srvFilter(cat); gt('s-services','services'); }
 const si={'s-splash':0,'s-home':1,'s-services':2,'s-detail':3,'s-lecrin':4,'s-abonnements':5,'s-brief':6,'s-espace':7,'s-maison':8,'s-villas':9,'s-villa-list':9,'s-villa-detail':9,'s-settings':10};
-const ni={'s-splash':'home','s-home':'home','s-services':'services','s-detail-doux-murmure':'services','s-detail-demande-mariage':'services','s-detail-anniversaire':'services','s-detail-gala':'services','s-detail-mater-lumina':'services','s-detail-prive':'services','s-ecrin-couple':'lecrin','s-ecrin-mariage-coffret':'lecrin','s-ecrin-sororite':'lecrin','s-ecrin-famille':'lecrin','s-ecrin-entreprise':'lecrin','s-checkout':'lecrin','s-lecrin':'lecrin','s-abonnements':'lecrin','s-brief':'brief','s-espace':'espace','s-maison':'home','s-villas':'villas','s-villa-list':'villas','s-villa-detail':'villas','s-settings':'home'};
+const ni={'s-splash':'home','s-home':'home','s-services':'services','s-detail-doux-murmure':'services','s-detail-demande-mariage':'services','s-detail-anniversaire':'services','s-detail-gala':'services','s-detail-mater-lumina':'services','s-detail-prive':'services','s-detail-bapteme-premiere-lumiere':'services','s-detail-communion-confirmation':'services','s-detail-noces-or-fidelite':'services','s-detail-seminaire-convention':'services','s-detail-ceremonie-officielle-voeux':'services','s-detail-inauguration-lancement':'services','s-detail-mariage-signature':'services','s-detail-renouvellement-voeux':'services','s-detail-escapade-villa':'services','s-detail-saint-valentin':'services','s-detail-grandes-retrouvailles':'services','s-detail-villa-confidentielle':'services','s-detail-douce-attente':'services','s-ecrin-couple':'lecrin','s-ecrin-mariage-coffret':'lecrin','s-ecrin-sororite':'lecrin','s-ecrin-famille':'lecrin','s-ecrin-entreprise':'lecrin','s-checkout':'lecrin','s-lecrin':'lecrin','s-abonnements':'lecrin','s-brief':'brief','s-espace':'espace','s-maison':'home','s-villas':'villas','s-villa-list':'villas','s-villa-detail':'villas','s-settings':'home'};
 
 function gt(id,nav,isBack){
   if(id===cur)return;
