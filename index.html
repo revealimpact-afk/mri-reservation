@@ -1333,7 +1333,7 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
         <div class="bstep act" id="bs1">
           <div class="bs-t">Mon événement</div><div class="bs-s">Dites-nous ce que vous souhaitez célébrer</div>
           <div><span class="fl">Type d'événement</span><div class="tc"><span class="tch sel" onclick="sc2(this)">Soirée Romantique</span><span class="tch" onclick="sc2(this)">Anniversaire</span><span class="tch" onclick="sc2(this)">Demande en Mariage</span><span class="tch" onclick="sc2(this)">Événement Pro</span><span class="tch" onclick="sc2(this)">Fête de Famille</span></div></div>
-          <div class="fr"><div><span class="fl">Date</span><input class="fi" type="text" value="14 août 2026" readonly style="cursor:pointer;"></div><div><span class="fl">Personnes</span><input class="fi" type="number" value="2"></div></div>
+          <div class="fr"><div><span class="fl">Date souhaitée</span><input class="fi" id="bf-date" type="date" style="cursor:pointer;color-scheme:dark;"><div id="bf-date-msg" style="font-size:9px;color:#E0A0A0;margin-top:4px;display:none;">Merci d'indiquer la date souhaitée.</div></div><div><span class="fl">Personnes</span><input class="fi" type="number" value="2" min="1"></div></div>
           <div><span class="fl">Lieu</span><input class="fi" type="text" placeholder="Guadeloupe, Paris…"></div>
           <button class="btn-g" onclick="bStep(2)">Continuer →</button>
         </div>
@@ -1356,7 +1356,7 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
           <div class="conf-t">Demande envoyée !</div>
           <div class="conf-s">"Nous avons bien reçu votre projet. L'équipe MRI vous contactera dans les <strong style="color:var(--gd);">24 heures</strong>."<br><br>— Maison Reveal Impact</div>
           <button class="btn-g" onclick="gt('s-espace','espace')">Suivre mon projet →</button>
-          <button class="btn-o" style="margin-top:8px;" onclick="gt('s-home','home')">Retour à l'accueil</button>
+          <button class="btn-o" style="margin-top:8px;" onclick="window.open('https://wa.me/590690310830','_blank')">Nous contacter sur WhatsApp</button><button class="btn-o" style="margin-top:8px;" onclick="gt('s-home','home')">Retour à l'accueil</button>
         </div>
       </div>
     </div>
@@ -1365,25 +1365,7 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
     <div class="screen" id="s-espace">
       <div class="esp-hdr"><div class="esp-gr">Mon Espace Client ✦</div><div class="esp-n">Bienvenue</div></div>
       <div class="sc">
-        <div class="proj-card">
-          <div class="pc-t"><div><h4>Doux Murmure™</h4><div class="pc-ev">14 Août 2026 · Guadeloupe</div></div><div class="pc-st">EN COURS</div></div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.4);margin-bottom:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Compte à rebours</div>
-          <div class="cd"><div class="cdb"><div class="cn">47</div><div class="cl">Jours</div></div><div class="cdb"><div class="cn">12</div><div class="cl">Heures</div></div><div class="cdb"><div class="cn">33</div><div class="cl">Min</div></div></div>
-        </div>
-        <div style="padding:14px 20px 4px;"><span class="ey g">Timeline de mon projet</span></div>
-        <div class="tl-item"><div class="ti-in"><div class="ti-d done">✓</div><div class="ti-ln"></div></div><div class="ti-co done"><strong>Demande reçue</strong><p>25 Juin 2026 · Confirmée</p></div></div>
-        <div class="tl-item"><div class="ti-in"><div class="ti-d done">✓</div><div class="ti-ln"></div></div><div class="ti-co done"><strong>Consultation téléphonique</strong><p>26 Juin · 30 min de consultation</p></div></div>
-        <div class="tl-item"><div class="ti-in"><div class="ti-d act">✦</div><div class="ti-ln"></div></div><div class="ti-co"><strong>Devis à valider</strong><p>1 200€ · Avant le 5 Juillet</p></div></div>
-        <div class="tl-item"><div class="ti-in"><div class="ti-d pen">4</div><div class="ti-ln"></div></div><div class="ti-co pen"><strong>Réservation confirmée</strong><p>Après validation du devis</p></div></div>
-        <div class="tl-item"><div class="ti-in"><div class="ti-d pen">5</div></div><div class="ti-co pen"><strong>Jour J · 14 Août</strong><p>L'équipe MRI installe la scénographie</p></div></div>
-        <div style="padding:12px 16px 4px;"><span class="ey g">Actions rapides</span></div>
-        <div class="qa">
-          <div class="qa-c"><div class="qa-rule"></div><h5>Mon devis</h5><p>1 200€ · À valider</p></div>
-          <div class="qa-c"><div class="qa-rule"></div><h5>Messages</h5><p>2 non lus</p></div>
-          <div class="qa-c"><div class="qa-rule"></div><h5>Abonnement</h5><p>MRI Éclat™ Annuel</p></div>
-          <div class="qa-c"><div class="qa-rule"></div><h5>Ma galerie</h5><p>8 inspirations</p></div>
-        </div>
-        <div style="padding:0 16px 16px;"><button class="btn-g" onclick="gt('s-home','home')">+ Créer un nouveau projet</button></div>
+        <div class="proj-card" style="text-align:center;"><h4 style="color:var(--gl);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;margin-bottom:6px;">Mon Espace</h4><p style="color:var(--muted);font-size:12px;line-height:1.5;">Chargement de votre projet…</p></div>
       </div>
     </div>
 
@@ -1731,7 +1713,14 @@ initTheme();
       var typeEl = document.querySelector('#bs1 .tch.sel');
       var type = typeEl ? typeEl.textContent.trim() : '';
       var f1 = document.querySelectorAll('#bs1 .fi');
-      var dateEv = f1[0] ? f1[0].value.trim() : '';
+      var dateEv = (function () {
+        var el = document.getElementById('bf-date');
+        var v = el && el.value ? el.value : (f1[0] ? f1[0].value.trim() : '');
+        if (/^\d{4}-\d{2}-\d{2}$/.test(v)) {
+          try { return new Date(v + 'T00:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return v; }
+        }
+        return v;
+      })();
       var pers = f1[1] ? f1[1].value.trim() : '';
       var lieu = f1[2] ? f1[2].value.trim() : '';
       var amb = q('#bs2 textarea');
@@ -1778,13 +1767,13 @@ initTheme();
     var host = document.querySelector('#s-espace .sc'); if (!host || !window._sb) return;
     var sess = null; try { var r = await window._sb.auth.getSession(); sess = r.data && r.data.session; } catch (e) {}
     if (!sess) {
-      host.innerHTML = '<div class="proj-card" style="text-align:center"><h4 style="margin-bottom:8px;color:var(--gl);font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:22px">Mon Espace</h4><p style="color:var(--muted);font-size:12px;margin-bottom:14px;line-height:1.5">Entrez votre email pour recevoir un lien de connexion sécurisé — sans mot de passe.</p><input class="fi" id="esc-email" type="email" placeholder="votre@email.com" style="margin-bottom:10px"><button class="btn-g" onclick="mriMagicLink()">Recevoir mon lien &#10022;</button><div id="esc-msg" style="color:var(--gold);font-size:12px;margin-top:12px"></div></div>';
+      host.innerHTML = '<div class="proj-card" style="text-align:center"><h4 style="margin-bottom:8px;color:var(--gl);font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:22px">Mon Espace</h4><p style="color:var(--muted);font-size:12px;margin-bottom:14px;line-height:1.5">Entrez votre email pour recevoir un lien de connexion sécurisé — sans mot de passe.</p><input class="fi" id="esc-email" type="email" placeholder="votre@email.com" value=\'' + (window.__mriEmail || '') + '\' style="margin-bottom:10px"><button class="btn-g" onclick="mriMagicLink()">Recevoir mon lien &#10022;</button><div id="esc-msg" style="color:var(--gold);font-size:12px;margin-top:12px"></div></div><div style="padding:6px 16px 20px;"><div style="border-top:0.5px solid var(--border-c);padding-top:14px;"><div style="font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:9px;">Une question ?</div><button class="btn-o" onclick="window.open(\'https://wa.me/590690310830\',\'_blank\')">Nous écrire sur WhatsApp</button><button class="btn-o" style="margin-top:8px;" onclick="location.href=\'mailto:contact@maisonrevealimpact.com\'">contact@maisonrevealimpact.com</button></div></div>';
       return;
     }
     var data = []; try { var q = await window._sb.from('mri_reservations').select('*').order('created_at', { ascending: false }); data = q.data || []; } catch (e) {}
     var email = sess.user && sess.user.email;
     if (!data.length) {
-      host.innerHTML = '<div class="proj-card"><h4 style="color:var(--gl)">Bonjour</h4><div class="pc-ev">' + email + '</div><p style="color:var(--muted);font-size:12px;margin-top:10px">Aucune réservation pour le moment.</p></div><div style="padding:14px 16px"><button class="btn-g" onclick="gt(\'s-home\',\'home\')">+ Composer une expérience</button></div><div style="padding:0 16px 16px"><button class="btn-o" onclick="mriLogout()">Se déconnecter</button></div>';
+      host.innerHTML = '<div class="proj-card"><h4 style="color:var(--gl)">Bonjour</h4><div class="pc-ev">' + email + '</div><p style="color:var(--muted);font-size:12px;margin-top:10px">Aucune réservation pour le moment.</p></div><div style="padding:14px 16px"><button class="btn-g" onclick="gt(\'s-home\',\'home\')">+ Composer une expérience</button></div><div style="padding:0 16px 16px"><button class="btn-o" onclick="mriLogout()">Se déconnecter</button></div><div style="padding:6px 16px 20px;"><div style="border-top:0.5px solid var(--border-c);padding-top:14px;"><div style="font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:9px;">Une question ?</div><button class="btn-o" onclick="window.open(\'https://wa.me/590690310830\',\'_blank\')">Nous écrire sur WhatsApp</button><button class="btn-o" style="margin-top:8px;" onclick="location.href=\'mailto:contact@maisonrevealimpact.com\'">contact@maisonrevealimpact.com</button></div></div>';
       return;
     }
     var res = data[0];
@@ -1798,10 +1787,31 @@ initTheme();
       { t: 'Jour J', p: res.date_event || 'À venir' }
     ];
     var tl = defs.map(function (s, i) { var cls = i < cs ? 'done' : (i === cs ? 'act' : 'pen'); var dot = i < cs ? '✓' : (i === cs ? '✦' : String(i + 1)); return '<div class="tl-item"><div class="ti-in"><div class="ti-d ' + cls + '">' + dot + '</div>' + (i < defs.length - 1 ? '<div class="ti-ln"></div>' : '') + '</div><div class="ti-co ' + (cls === 'pen' ? 'pen' : '') + '"><strong>' + s.t + '</strong><p>' + s.p + '</p></div></div>'; }).join('');
-    host.innerHTML = '<div class="proj-card"><div class="pc-t"><div><h4>' + (res.type_event || 'Mon projet') + '</h4><div class="pc-ev">' + (res.date_event || '') + (res.lieu ? (' · ' + res.lieu) : '') + '</div></div><div class="pc-st">EN COURS</div></div>' + (res.formule ? '<div style="font-size:11px;color:var(--mid);margin-top:8px">' + res.formule + '</div>' : '') + (res.estimation ? '<div style="font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:22px;color:var(--gold);margin-top:6px">' + Number(res.estimation).toLocaleString('fr-FR') + ' € <span style="font-size:10px;color:var(--muted);font-style:normal">estimation</span></div>' : '') + '</div><div style="padding:14px 20px 4px"><span class="ey g">Timeline de mon projet</span></div>' + tl + '<div style="padding:14px 16px 16px"><button class="btn-o" onclick="mriLogout()">Se déconnecter</button></div>';
+    host.innerHTML = '<div class="proj-card"><div class="pc-t"><div><h4>' + (res.type_event || 'Mon projet') + '</h4><div class="pc-ev">' + (res.date_event || '') + (res.lieu ? (' · ' + res.lieu) : '') + '</div></div><div class="pc-st">EN COURS</div></div>' + (res.formule ? '<div style="font-size:11px;color:var(--mid);margin-top:8px">' + res.formule + '</div>' : '') + (res.estimation ? '<div style="font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:22px;color:var(--gold);margin-top:6px">' + Number(res.estimation).toLocaleString('fr-FR') + ' € <span style="font-size:10px;color:var(--muted);font-style:normal">estimation</span></div>' : '') + '</div><div style="padding:14px 20px 4px"><span class="ey g">Timeline de mon projet</span></div>' + tl + '<div style="padding:14px 16px 16px"><button class="btn-o" onclick="mriLogout()">Se déconnecter</button></div><div style="padding:6px 16px 20px;"><div style="border-top:0.5px solid var(--border-c);padding-top:14px;"><div style="font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:9px;">Une question ?</div><button class="btn-o" onclick="window.open(\'https://wa.me/590690310830\',\'_blank\')">Nous écrire sur WhatsApp</button><button class="btn-o" style="margin-top:8px;" onclick="location.href=\'mailto:contact@maisonrevealimpact.com\'">contact@maisonrevealimpact.com</button></div></div>';
   }
   window.mriMagicLink = async function () { var em = (document.getElementById('esc-email') || {}).value; if (!em) return; var m = document.getElementById('esc-msg'); if (m) m.textContent = 'Envoi…'; try { var r = await window._sb.auth.signInWithOtp({ email: em, options: { emailRedirectTo: location.href.split('#')[0] } }); if (m) m.textContent = r.error ? ('Erreur : ' + r.error.message) : '✦ Lien envoyé ! Consultez votre email.'; } catch (e) { if (m) m.textContent = 'Erreur : ' + e.message; } };
   window.mriLogout = async function () { try { await window._sb.auth.signOut(); } catch (e) {} mriRenderEspace(); };
+
+  // ═══ Date reelle : minimum = aujourd'hui, saisie obligatoire a l'etape 1 ═══
+  (function () {
+    var d = document.getElementById('bf-date');
+    if (d) { var t = new Date(); t.setHours(12, 0, 0, 0); d.min = t.toISOString().slice(0, 10); }
+    var _origStep = window.bStep;
+    window.bStep = function (n) {
+      if (n === 2) {
+        var el = document.getElementById('bf-date'), msg = document.getElementById('bf-date-msg');
+        if (el && !el.value) {
+          if (msg) msg.style.display = 'block';
+          try { el.focus(); if (el.showPicker) el.showPicker(); } catch (e) {}
+          return;
+        }
+        if (msg) msg.style.display = 'none';
+      }
+      if (typeof _origStep === 'function') _origStep(n);
+    };
+    var em = document.querySelector('#bs3 input[type="email"]');
+    if (em) em.addEventListener('change', function () { window.__mriEmail = em.value.trim(); });
+  })();
   var _origGt = window.gt;
   window.gt = function (id, nav, isBack) { _origGt(id, nav, isBack); if (id === 's-espace') setTimeout(mriRenderEspace, 30); };
   try { window._sb.auth.onAuthStateChange(function () { if (mriEspaceActive()) mriRenderEspace(); }); } catch (e) {}
