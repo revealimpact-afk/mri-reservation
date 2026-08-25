@@ -670,6 +670,7 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
           <div class="cat-tile touch-glow" onclick="goUnivers('romantique')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Soirées<br>Romantiques</div><div class="ct-s">Dîner à deux · Villa · Saint-Valentin</div></div></div>
           <div class="cat-tile touch-glow" onclick="goUnivers('prive')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Événements<br>Privés</div><div class="ct-s">Retrouvailles · Villa privée · Naissance</div></div></div>
           <div class="cat-tile touch-glow" onclick="goUnivers('pro')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Corporate<br>& Pro</div><div class="ct-s">Séminaire · Vœux officiels · Lancement</div></div></div>
+          <div class="cat-tile touch-glow" onclick="goUnivers('sororite')"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Sororité</div><div class="ct-s">Soirée pyjama · EVJF · Bridal shower</div></div></div>
           <div class="cat-tile touch-glow" onclick="goUnivers('saisonnier')" style="display:none"><div class="ct-rule"></div><span class="ct-arrow">›</span><div><div class="ct-n">Expériences<br>Saisonnières</div><div class="ct-s">Mater Lumina™</div></div></div>
         </div>
 
@@ -714,7 +715,7 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
         <div class="sic touch-glow" data-cat="famille" onclick="gt('s-detail-anniversaire','services')"><div class="sic-b"><h4>Anniversaire Prestige</h4><p>40, 50, 60 ans — chaque âge mérite une célébration à sa mesure.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Famille</span></div></div><span class="sic-arr">›</span></div>
         <div class="sic touch-glow" data-cat="pro" onclick="gt('s-detail-gala','services')"><div class="sic-b"><h4>Gala d'Entreprise</h4><p>L'excellence MRI au service de votre image professionnelle.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Pro</span></div></div><span class="sic-arr">›</span></div>
         <div class="sic touch-glow" data-cat="famille saisonnier" data-hidden="1" onclick="gt('s-detail-mater-lumina','services')" style="display:none"><div class="sic-b"><h4>Mater Lumina™</h4><p>L'expérience ultime pour célébrer votre maman. Un moment hors du temps.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Saisonnier</span></div></div><span class="sic-arr">›</span></div>
-        <div class="sic touch-glow" data-cat="prive" onclick="gt('s-detail-prive','services')"><div class="sic-b"><h4>Événement Privé</h4><p>EVJF, Bridal Shower, soirée d'exception — votre vision, notre scénographie.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Exclusif</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="prive" onclick="gt('s-detail-prive','services')"><div class="sic-b"><h4>Événement Privé</h4><p>Soirée d'exception, moment à votre mesure — votre vision, notre scénographie.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Exclusif</span></div></div><span class="sic-arr">›</span></div>
         <div class="sic touch-glow" data-cat="famille" onclick="gt('s-detail-bapteme-premiere-lumiere','services')"><div class="sic-b"><h4>Première Lumière</h4><p>Le baptême de votre enfant prolongé par une réception scénographiée, où la blancheur et la lumière disent la joie.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Sacrement</span></div></div><span class="sic-arr">›</span></div>
         <div class="sic touch-glow" data-cat="famille" onclick="gt('s-detail-communion-confirmation','services')"><div class="sic-b"><h4>Le Grand Oui</h4><p>Première communion ou confirmation : une réception élégante qui donne à ce oui personnel la solennité qu'il mérite.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Transmission</span></div></div><span class="sic-arr">›</span></div>
         <div class="sic touch-glow" data-cat="famille couple" onclick="gt('s-detail-noces-or-fidelite','services')"><div class="sic-b"><h4>Or et Fidélité</h4><p>Noces d'or ou anniversaire de mariage : une célébration qui raconte des décennies de fidélité devant toute la famille.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Fidélité</span></div></div><span class="sic-arr">›</span></div>
@@ -727,6 +728,11 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
         <div class="sic touch-glow" data-cat="romantique couple saisonnier" data-hidden="1" onclick="gt('s-detail-saint-valentin','services')" style="display:none"><div class="sic-b"><h4>Saint-Valentin Signature</h4><p>Notre édition du 14 février : un décor signature, une soirée à deux orchestrée de bout en bout.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Saisonnier</span></div></div><span class="sic-arr">›</span></div>
         <div class="sic touch-glow" data-cat="prive famille" onclick="gt('s-detail-grandes-retrouvailles','services')"><div class="sic-b"><h4>Les Grandes Retrouvailles</h4><p>Une réception de famille pensée pour ceux qui reviennent au pays et pour ceux qui les attendaient.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Famille</span></div></div><span class="sic-arr">›</span></div>
         <div class="sic touch-glow" data-cat="prive" onclick="gt('s-detail-villa-confidentielle','services')"><div class="sic-b"><h4>Villa Confidentielle</h4><p>Une réception privée dans une villa choisie avec vous, orchestrée du premier accueil à la dernière lumière.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Villa</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="sororite" onclick="gt('s-detail-soiree-pyjama-premium','services')"><div class="sic-b"><h4>Nuit de Soie</h4><p>Une nuit cocon entre amies, enveloppée de lumière dorée et de douceur, pour ralentir et vous retrouver vraiment.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Cocon</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="sororite prive" onclick="gt('s-detail-evjf-signature','services')"><div class="sic-b"><h4>La Grande Traversée</h4><p>Une traversée symbolique entre sœurs de cœur : vous célébrez la future mariée avec élégance et complicité.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Complicité</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="sororite prive" onclick="gt('s-detail-bridal-shower','services')"><div class="sic-b"><h4>Le Jardin Doré</h4><p>Un après-midi tout en douceur pour entourer la future mariée d'attentions choisies et de votre présence réelle.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Douceur</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="sororite" onclick="gt('s-detail-cercle-des-soeurs','services')"><div class="sic-b"><h4>Le Cercle des Sœurs</h4><p>Une journée suspendue entre sœurs de cœur, pensée pour vous parler sans détour et vous ressourcer ensemble.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Ressourcement</span></div></div><span class="sic-arr">›</span></div>
+        <div class="sic touch-glow" data-cat="sororite" onclick="gt('s-detail-nouveau-chapitre','services')"><div class="sic-b"><h4>Nouveau Chapitre</h4><p>Une soirée entre amies pour refermer une page avec grâce, entourée, et entrer légère dans celle qui s'ouvre à vous.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Renouveau</span></div></div><span class="sic-arr">›</span></div>
         <div class="sic touch-glow" data-cat="prive famille" onclick="gt('s-detail-douce-attente','services')"><div class="sic-b"><h4>La Douce Attente</h4><p>Une réception raffinée pour accueillir l'enfant à venir et honorer celle qui s'apprête à devenir mère.</p><div class="sic-f"><span class="sic-p">Sur devis</span><span class="pill">Naissance</span></div></div><span class="sic-arr">›</span></div>
         <div style="height:12px;"></div>
       </div>
@@ -1170,6 +1176,126 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
       </div>
     </div>
 
+    <div class="screen" id="s-detail-soiree-pyjama-premium">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Sororité · Cocon entre amies</div><div class="dh-ti">Nuit de <em>Soie</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">4 à 8 amies</div><div class="mc">Une soirée, dès 18h</div><div class="mc">Villa ou appartement</div></div>
+          <div class="d-desc">«Vous avez posé vos sacs, éteint vos téléphones, et retrouvé, sous une lumière dorée, toute la légèreté d'être ensemble, sans rien à prouver.»</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception du décor cocon : textiles précieux, coussins et lumière tamisée dorée</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie d'ambiance : halos lumineux, parfum d'intérieur et musique sur mesure</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination du déroulé de soirée pour un rythme fluide et sans contrainte</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Attentions personnalisées remises à chaque invitée au fil de la soirée</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="window.open('https://wa.me/590690310830','_blank')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-evjf-signature">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Sororité · EVJF signature</div><div class="dh-ti">La Grande <em>Traversée</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">5 à 12 amies</div><div class="mc">Une journée ou une soirée</div><div class="mc">Villa, plage ou lieu privé</div></div>
+          <div class="d-desc">«Entourée des vôtres, vous avez traversé ce cap de vie dans la lumière, la complicité et l'élégance, sans un instant de trop.»</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception d'un parcours scénographié qui célèbre la future mariée du début à la fin</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Décor signature et mise en lumière dorée, adaptés au lieu que vous aurez choisi</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Séquence de surprises pensée pour célébrer la future mariée à chaque étape</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination complète de la journée ou de la soirée, sans charge mentale pour vous</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="window.open('https://wa.me/590690310830','_blank')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-bridal-shower">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Sororité · Bridal shower délicat</div><div class="dh-ti">Le Jardin <em>Doré</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">6 à 15 amies</div><div class="mc">Un après-midi</div><div class="mc">Jardin, villa ou terrasse</div></div>
+          <div class="d-desc">«Autour de vous, chaque geste, chaque cadeau, chaque parole disait la même chose : vous êtes aimée et accompagnée jusque dans les détails.»</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie florale et lumineuse pensée pour un après-midi entre femmes</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Mise en scène du moment des cadeaux, pensée pour honorer la future mariée</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Sélection de mets et boissons raffinés, servis avec élégance et simplicité</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination du déroulé pour que chaque instant reste fluide et léger</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="window.open('https://wa.me/590690310830','_blank')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-cercle-des-soeurs">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Sororité · Journée retraite entre sœurs</div><div class="dh-ti">Le Cercle des <em>Sœurs</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">3 à 6 femmes</div><div class="mc">Une journée</div><div class="mc">Villa ou lieu ressourçant</div></div>
+          <div class="d-desc">«Vous vous êtes assises, les unes en face des autres, vous avez parlé sans détour, et vous êtes reparties plus proches qu'au premier matin.»</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Conception d'un parcours alternant temps calmes et moments partagés entre vous</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Décor épuré et lumière naturelle mise en valeur pour un cadre apaisant</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Aménagement d'un coin salon intimiste, propice à une parole vraie entre vous</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Repas raffiné servi dans un cadre intimiste, pensé pour prolonger l'instant</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="window.open('https://wa.me/590690310830','_blank')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="s-detail-nouveau-chapitre">
+      <div class="dh">
+        <div class="dh-bg"></div><div class="dh-glow"></div>
+        <div style="position:absolute;top:10px;left:16px;z-index:10;"><div class="back" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff;" onclick="goBack()">←</div></div>
+        <div class="dh-cnt"><div class="dh-tag">Sororité · Passage de vie célébré</div><div class="dh-ti">Nouveau <em>Chapitre</em></div></div>
+      </div>
+      <div class="sc">
+        <div class="d-body">
+          <div class="d-meta"><div class="mc">4 à 10 amies</div><div class="mc">Une soirée</div><div class="mc">Villa ou lieu choisi ensemble</div></div>
+          <div class="d-desc">«Vous avez refermé une page en beauté, entourée de celles qui comptent, prête à écrire la suite avec confiance et légèreté.»</div>
+          <div class="inc-t">CE QUI EST INCLUS</div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Scénographie sur mesure, pensée avec vous pour marquer ce nouveau départ</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Mise en lumière dorée et ambiance sur mesure pour marquer cet instant</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Moment de parole partagé pour honorer ce qui se referme et ce qui commence</div></div>
+          <div class="inc"><div class="inc-d"></div><div class="inc-tx">Coordination discrète de la soirée pour que vous restiez pleinement présente</div></div>
+          <div class="d-pb"><div><div class="dpb-l">Tarif</div><div class="dpb-p">Sur devis</div></div><div style="text-align:right;"><div style="font-size:8.5px;color:var(--muted);">Selon options</div><div style="font-size:8.5px;color:var(--gd);font-weight:600;margin-top:2px;">Devis sous 24h</div></div></div>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <button class="btn-g" onclick="gt('s-brief','brief')">Je veux vivre cette expérience</button>
+          <button class="btn-o" onclick="window.open('https://wa.me/590690310830','_blank')">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
 <div class="screen" id="s-ecrin-couple">
       <div class="top-bar"><div class="back" onclick="goBack()">&larr;</div><div class="tbt">L'Écrin Couple™</div></div>
       <div class="sc" style="padding:0 0 28px;">
@@ -1476,7 +1602,8 @@ var SRV_UNIVERS = {
   romantique: 'Soirées Romantiques',
   prive:      'Événements Privés',
   pro:        'Corporate & Pro',
-  saisonnier: 'Expériences Saisonnières'
+  saisonnier: 'Expériences Saisonnières',
+  sororite:   'Sororité'
 };
 function srvFilter(cat){
   var cards = document.querySelectorAll('#s-services .sic');
@@ -1500,7 +1627,7 @@ function srvFilter(cat){
 }
 function goUnivers(cat){ srvFilter(cat); gt('s-services','services'); }
 const si={'s-splash':0,'s-home':1,'s-services':2,'s-detail':3,'s-lecrin':4,'s-abonnements':5,'s-brief':6,'s-espace':7,'s-maison':8,'s-villas':9,'s-villa-list':9,'s-villa-detail':9,'s-settings':10};
-const ni={'s-splash':'home','s-home':'home','s-services':'services','s-detail-doux-murmure':'services','s-detail-demande-mariage':'services','s-detail-anniversaire':'services','s-detail-gala':'services','s-detail-mater-lumina':'services','s-detail-prive':'services','s-detail-bapteme-premiere-lumiere':'services','s-detail-communion-confirmation':'services','s-detail-noces-or-fidelite':'services','s-detail-seminaire-convention':'services','s-detail-ceremonie-officielle-voeux':'services','s-detail-inauguration-lancement':'services','s-detail-mariage-signature':'services','s-detail-renouvellement-voeux':'services','s-detail-escapade-villa':'services','s-detail-saint-valentin':'services','s-detail-grandes-retrouvailles':'services','s-detail-villa-confidentielle':'services','s-detail-douce-attente':'services','s-ecrin-couple':'lecrin','s-ecrin-mariage-coffret':'lecrin','s-ecrin-sororite':'lecrin','s-ecrin-famille':'lecrin','s-ecrin-entreprise':'lecrin','s-checkout':'lecrin','s-lecrin':'lecrin','s-abonnements':'lecrin','s-brief':'brief','s-espace':'espace','s-maison':'home','s-villas':'villas','s-villa-list':'villas','s-villa-detail':'villas','s-settings':'home'};
+const ni={'s-splash':'home','s-home':'home','s-services':'services','s-detail-doux-murmure':'services','s-detail-demande-mariage':'services','s-detail-anniversaire':'services','s-detail-gala':'services','s-detail-mater-lumina':'services','s-detail-prive':'services','s-detail-bapteme-premiere-lumiere':'services','s-detail-communion-confirmation':'services','s-detail-noces-or-fidelite':'services','s-detail-seminaire-convention':'services','s-detail-ceremonie-officielle-voeux':'services','s-detail-inauguration-lancement':'services','s-detail-mariage-signature':'services','s-detail-renouvellement-voeux':'services','s-detail-escapade-villa':'services','s-detail-saint-valentin':'services','s-detail-grandes-retrouvailles':'services','s-detail-villa-confidentielle':'services','s-detail-douce-attente':'services','s-detail-soiree-pyjama-premium':'services','s-detail-evjf-signature':'services','s-detail-bridal-shower':'services','s-detail-cercle-des-soeurs':'services','s-detail-nouveau-chapitre':'services','s-ecrin-couple':'lecrin','s-ecrin-mariage-coffret':'lecrin','s-ecrin-sororite':'lecrin','s-ecrin-famille':'lecrin','s-ecrin-entreprise':'lecrin','s-checkout':'lecrin','s-lecrin':'lecrin','s-abonnements':'lecrin','s-brief':'brief','s-espace':'espace','s-maison':'home','s-villas':'villas','s-villa-list':'villas','s-villa-detail':'villas','s-settings':'home'};
 
 function gt(id,nav,isBack){
   if(id===cur)return;
