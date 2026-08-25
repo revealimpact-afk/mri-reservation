@@ -1333,8 +1333,8 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
         <div class="bstep act" id="bs1">
           <div class="bs-t">Mon événement</div><div class="bs-s">Dites-nous ce que vous souhaitez célébrer</div>
           <div><span class="fl">Type d'événement</span><div class="tc"><span class="tch sel" onclick="sc2(this)">Soirée Romantique</span><span class="tch" onclick="sc2(this)">Anniversaire</span><span class="tch" onclick="sc2(this)">Demande en Mariage</span><span class="tch" onclick="sc2(this)">Événement Pro</span><span class="tch" onclick="sc2(this)">Fête de Famille</span></div></div>
-          <div class="fr"><div><span class="fl">Date souhaitée</span><input class="fi" id="bf-date" type="date" style="cursor:pointer;color-scheme:dark;"><div id="bf-date-msg" style="font-size:9px;color:#E0A0A0;margin-top:4px;display:none;">Merci d'indiquer la date souhaitée.</div></div><div><span class="fl">Personnes</span><input class="fi" type="number" value="2" min="1"></div></div>
-          <div><span class="fl">Lieu</span><input class="fi" type="text" placeholder="Guadeloupe, Paris…"></div>
+          <div class="fr"><div><span class="fl" id="bf-date-label">Date souhaitée</span><input class="fi" id="bf-date" type="date" style="cursor:pointer;color-scheme:dark;"><div id="bf-date-msg" style="font-size:9px;color:#E0A0A0;margin-top:4px;display:none;">Merci d'indiquer la date souhaitée.</div><div id="bf-range-toggle" style="font-size:9px;color:var(--gd);margin-top:6px;cursor:pointer;text-decoration:underline;">+ Plusieurs nuits ?</div><div id="bf-date-fin-wrap" style="display:none;margin-top:9px;"><span class="fl">Fin du séjour</span><input class="fi" id="bf-date-fin" type="date" style="cursor:pointer;color-scheme:dark;"><div id="bf-date-fin-msg" style="font-size:9px;color:#E0A0A0;margin-top:4px;display:none;">La fin du séjour doit être après le début.</div></div></div><div><span class="fl">Personnes</span><input class="fi" id="bf-personnes" type="number" value="2" min="1"></div></div>
+          <div><span class="fl">Lieu</span><input class="fi" id="bf-lieu" type="text" placeholder="Guadeloupe, Paris…"></div>
           <button class="btn-g" onclick="bStep(2)">Continuer →</button>
         </div>
         <div class="bstep" id="bs2">
@@ -1712,17 +1712,22 @@ initTheme();
       var q = function (s) { var e = document.querySelector(s); return e ? (e.value || '').trim() : ''; };
       var typeEl = document.querySelector('#bs1 .tch.sel');
       var type = typeEl ? typeEl.textContent.trim() : '';
-      var f1 = document.querySelectorAll('#bs1 .fi');
       var dateEv = (function () {
+        var fmt = function (v) { if (/^\d{4}-\d{2}-\d{2}$/.test(v)) { try { return new Date(v + 'T00:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return v; } } return v; };
         var el = document.getElementById('bf-date');
-        var v = el && el.value ? el.value : (f1[0] ? f1[0].value.trim() : '');
-        if (/^\d{4}-\d{2}-\d{2}$/.test(v)) {
-          try { return new Date(v + 'T00:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return v; }
+        var elFin = document.getElementById('bf-date-fin');
+        var wrap = document.getElementById('bf-date-fin-wrap');
+        var v = el && el.value ? el.value : '';
+        var rangeOn = wrap && getComputedStyle(wrap).display !== 'none' && elFin && elFin.value;
+        if (rangeOn) {
+          var d1 = new Date(v + 'T00:00:00'), d2 = new Date(elFin.value + 'T00:00:00');
+          var nuits = Math.max(1, Math.round((d2 - d1) / 86400000));
+          return fmt(v) + ' \u2192 ' + fmt(elFin.value) + ' (' + nuits + ' nuit' + (nuits > 1 ? 's' : '') + ')';
         }
-        return v;
+        return fmt(v);
       })();
-      var pers = f1[1] ? f1[1].value.trim() : '';
-      var lieu = f1[2] ? f1[2].value.trim() : '';
+      var pers = (document.getElementById('bf-personnes') || {}).value || '';
+      var lieu = ((document.getElementById('bf-lieu') || {}).value || '').trim();
       var amb = q('#bs2 textarea');
       var formula = window.__mriFormula || '';
       var est = window.__mriEst || 0;
@@ -1792,10 +1797,25 @@ initTheme();
   window.mriMagicLink = async function () { var em = (document.getElementById('esc-email') || {}).value; if (!em) return; var m = document.getElementById('esc-msg'); if (m) m.textContent = 'Envoi…'; try { var r = await window._sb.auth.signInWithOtp({ email: em, options: { emailRedirectTo: location.href.split('#')[0] } }); if (m) m.textContent = r.error ? ('Erreur : ' + r.error.message) : '✦ Lien envoyé ! Consultez votre email.'; } catch (e) { if (m) m.textContent = 'Erreur : ' + e.message; } };
   window.mriLogout = async function () { try { await window._sb.auth.signOut(); } catch (e) {} mriRenderEspace(); };
 
-  // ═══ Date reelle : minimum = aujourd'hui, saisie obligatoire a l'etape 1 ═══
+  // ═══ Date reelle : minimum = aujourd'hui, saisie obligatoire a l'etape 1, plage optionnelle (plusieurs nuits) ═══
   (function () {
-    var d = document.getElementById('bf-date');
-    if (d) { var t = new Date(); t.setHours(12, 0, 0, 0); d.min = t.toISOString().slice(0, 10); }
+    var d = document.getElementById('bf-date'), dFin = document.getElementById('bf-date-fin');
+    var lbl = document.getElementById('bf-date-label'), tog = document.getElementById('bf-range-toggle'), wrap = document.getElementById('bf-date-fin-wrap');
+    var todayISO = (function () { var t = new Date(); t.setHours(12, 0, 0, 0); return t.toISOString().slice(0, 10); })();
+    if (d) d.min = todayISO;
+    function syncFinMin() { if (!dFin) return; var base = (d && d.value) ? d.value : todayISO; dFin.min = base; if (dFin.value && dFin.value < base) dFin.value = ''; }
+    if (d) d.addEventListener('change', syncFinMin);
+    syncFinMin();
+    if (tog && wrap && lbl) {
+      tog.addEventListener('click', function () {
+        var on = wrap.style.display !== 'none';
+        wrap.style.display = on ? 'none' : 'block';
+        tog.textContent = on ? '+ Plusieurs nuits ?' : '\u2212 Un seul jour';
+        lbl.textContent = on ? 'Date souhait\u00e9e' : 'D\u00e9but du s\u00e9jour';
+        if (on && dFin) dFin.value = '';
+        else syncFinMin();
+      });
+    }
     var _origStep = window.bStep;
     window.bStep = function (n) {
       if (n === 2) {
@@ -1806,6 +1826,16 @@ initTheme();
           return;
         }
         if (msg) msg.style.display = 'none';
+        var rangeOn = wrap && getComputedStyle(wrap).display !== 'none';
+        var finMsg = document.getElementById('bf-date-fin-msg');
+        if (rangeOn) {
+          if (!dFin || !dFin.value || dFin.value <= el.value) {
+            if (finMsg) finMsg.style.display = 'block';
+            try { dFin.focus(); if (dFin.showPicker) dFin.showPicker(); } catch (e) {}
+            return;
+          }
+          if (finMsg) finMsg.style.display = 'none';
+        }
       }
       if (typeof _origStep === 'function') _origStep(n);
     };
