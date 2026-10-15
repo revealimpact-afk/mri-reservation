@@ -607,13 +607,13 @@ input[type=date].fi,input[type=time].fi{-webkit-appearance:none;appearance:none;
           <p style="font-size:10.5px;color:var(--muted);margin-top:6px;line-height:1.5;">Votre compte pour composer et suivre vos exp&eacute;riences.</p>
         </div>
         <div style="display:flex;gap:10px;">
-          <div style="flex:1;"><span class="fl">Pr&eacute;nom</span><input class="fi" id="reg-prenom" type="text" placeholder="Pr&eacute;nom"></div>
-          <div style="flex:1;"><span class="fl">Nom</span><input class="fi" id="reg-nom" type="text" placeholder="Nom"></div>
+          <div style="flex:1;"><span class="fl">Pr&eacute;nom</span><input class="fi" id="reg-prenom" autocomplete="given-name" type="text" placeholder="Pr&eacute;nom"></div>
+          <div style="flex:1;"><span class="fl">Nom</span><input class="fi" id="reg-nom" autocomplete="family-name" type="text" placeholder="Nom"></div>
         </div>
-        <div style="margin-top:11px;"><span class="fl">Adresse e-mail</span><input class="fi" id="reg-email" type="email" placeholder="votre@email.com"></div>
-        <div style="margin-top:11px;"><span class="fl">T&eacute;l&eacute;phone</span><input class="fi" id="reg-tel" type="tel" placeholder="+590 690 00 00 00"></div>
-        <div style="margin-top:11px;"><span class="fl">Mot de passe</span><input class="fi" id="reg-pass" type="password" placeholder="8 caract&egrave;res minimum"></div>
-        <div style="margin-top:11px;"><span class="fl">Confirmer le mot de passe</span><input class="fi" id="reg-pass2" type="password" placeholder="Retapez votre mot de passe"></div>
+        <div style="margin-top:11px;"><span class="fl">Adresse e-mail</span><input class="fi" id="reg-email" autocomplete="email" type="email" placeholder="votre@email.com"></div>
+        <div style="margin-top:11px;"><span class="fl">T&eacute;l&eacute;phone</span><input class="fi" id="reg-tel" autocomplete="tel" type="tel" placeholder="+590 690 00 00 00"></div>
+        <div style="margin-top:11px;"><span class="fl">Mot de passe</span><input class="fi" id="reg-pass" autocomplete="new-password" type="password" placeholder="8 caract&egrave;res minimum"></div>
+        <div style="margin-top:11px;"><span class="fl">Confirmer le mot de passe</span><input class="fi" id="reg-pass2" autocomplete="new-password" type="password" placeholder="Retapez votre mot de passe"></div>
         <div id="reg-msg" style="font-size:10.5px;margin-top:10px;min-height:14px;line-height:1.4;"></div>
         <button class="btn-g" style="margin-top:6px;" onclick="mriRegister()">Cr&eacute;er mon compte</button>
         <div class="oauth-sep"><span>ou s'inscrire avec</span></div>
@@ -631,8 +631,8 @@ input[type=date].fi,input[type=time].fi{-webkit-appearance:none;appearance:none;
           <div class="ey g">Heureuses de vous revoir</div>
           <div style="font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--dark);letter-spacing:1px;margin-top:3px;">Maison Reveal Impact</div>
         </div>
-        <div><span class="fl">Adresse e-mail</span><input class="fi" id="log-email" type="email" placeholder="votre@email.com"></div>
-        <div style="margin-top:11px;"><span class="fl">Mot de passe</span><input class="fi" id="log-pass" type="password" placeholder="Votre mot de passe"></div>
+        <div><span class="fl">Adresse e-mail</span><input class="fi" id="log-email" autocomplete="email" type="email" placeholder="votre@email.com"></div>
+        <div style="margin-top:11px;"><span class="fl">Mot de passe</span><input class="fi" id="log-pass" autocomplete="current-password" type="password" placeholder="Votre mot de passe"></div>
         <div style="text-align:right;margin-top:8px;"><span style="font-size:10px;color:var(--gd);cursor:pointer;" onclick="mriForgotPwd()">Mot de passe oubli&eacute; ?</span></div>
         <div id="log-msg" style="font-size:10.5px;margin-top:8px;min-height:14px;line-height:1.4;"></div>
         <button class="btn-g" style="margin-top:6px;" onclick="mriLoginPwd()">Se connecter</button>
@@ -1977,7 +1977,7 @@ initTheme();
   })();
   var _origGt = window.gt;
   window.gt = function (id, nav, isBack) { _origGt(id, nav, isBack); if (id === 's-espace') setTimeout(mriRenderEspace, 30); };
-  try { window._sb.auth.onAuthStateChange(function () { if (mriEspaceActive()) mriRenderEspace(); }); } catch (e) {}
+  try { window._sb.auth.onAuthStateChange(function () { setTimeout(function () { if (mriEspaceActive()) mriRenderEspace(); }, 0); }); } catch (e) {}
   setTimeout(function () { if (mriEspaceActive()) mriRenderEspace(); }, 500);
   if (/access_token|type=magiclink|type=recovery/.test(location.hash)) {
     setTimeout(function () { try { window.gt('s-espace', 'espace'); } catch (e) {} }, 800);
@@ -1993,6 +1993,7 @@ initTheme();
     if (!tel) { setMsg("Merci d'indiquer votre numéro de téléphone.", false); return; }
     if (pass.length < 8) { setMsg("Le mot de passe doit contenir au moins 8 caractères.", false); return; }
     if (pass !== pass2) { setMsg("Les mots de passe ne correspondent pas.", false); return; }
+    if (window.__regBusy) return; window.__regBusy = true;
     setMsg("Création de votre compte…", true);
     try {
       var r = await window._sb.auth.signUp({ email: email, password: pass, options: { data: { prenom: prenom, nom: nom, telephone: tel } } });
@@ -2001,6 +2002,7 @@ initTheme();
       if (r.data && r.data.session) { gt("s-home", "home"); }
       else { setMsg("✦ Compte créé ! Vérifiez votre e-mail pour le confirmer, puis connectez-vous.", true); }
     } catch (e) { setMsg("Erreur : " + e.message, false); }
+    finally { window.__regBusy = false; }
   };
   window.mriLoginPwd = async function () {
     var g = function (id) { var e = document.getElementById(id); return e ? e.value.trim() : ""; };
@@ -2032,7 +2034,7 @@ initTheme();
     }
     var el = document.getElementById("mri-soon"); if (el) el.style.display = "flex";
   };
-  try { window._sb.auth.onAuthStateChange(function (evt) { if (evt === "SIGNED_IN") { var sp = document.getElementById("s-splash"), rg = document.getElementById("s-register"), lg = document.getElementById("s-login"); if ((sp && sp.classList.contains("act")) || (rg && rg.classList.contains("act")) || (lg && lg.classList.contains("act"))) { gt("s-home", "home"); } } }); } catch (e) {}
+  try { window._sb.auth.onAuthStateChange(function (evt) { if (evt === "SIGNED_IN") { setTimeout(function () { var sp = document.getElementById("s-splash"), rg = document.getElementById("s-register"), lg = document.getElementById("s-login"); if ((sp && sp.classList.contains("act")) || (rg && rg.classList.contains("act")) || (lg && lg.classList.contains("act"))) { gt("s-home", "home"); } }, 0); } }); } catch (e) {}
   setTimeout(async function () { try { var s = await window._sb.auth.getSession(); var sp = document.getElementById("s-splash"); if (s.data && s.data.session && sp && sp.classList.contains("act")) { gt("s-home", "home"); } } catch (e) {} }, 700);
   window._COF = {couple:{n:"L'Écrin Couple™",p:64,link:"https://buy.stripe.com/bJe28s85t5nXcdeg2uaAw09"},mariage:{n:"L'Écrin Mariage™",p:74,link:"https://buy.stripe.com/aFa4gAclJ5nXa564jMaAw08"},sororite:{n:"L'Écrin Sororité™",p:59,link:"https://buy.stripe.com/4gM14o0D14jT4KM5nQaAw07"},famille:{n:"L'Écrin Famille™",p:59,link:"https://buy.stripe.com/28E3cw0D18A95OQeYqaAw06"},entreprise:{n:"L'Écrin Entreprise™",p:79,link:"https://buy.stripe.com/cNieVedpNbMl6SU7vYaAw05"}};
   window._selectedProduct = null;
