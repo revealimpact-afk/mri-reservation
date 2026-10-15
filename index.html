@@ -368,6 +368,8 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;paddi
 .fr>*{min-width:0;}
 .fi{min-width:0;max-width:100%;}
 input[type=date].fi,input[type=time].fi{-webkit-appearance:none;appearance:none;min-height:46px;width:100%;}
+.fr .fi{height:52px;min-height:52px;box-sizing:border-box;line-height:1.2;}
+.fr input[type=date].fi{display:block;}
 @media(max-width:340px){.fr{grid-template-columns:1fr;}}
 .tc{display:flex;flex-wrap:wrap;gap:7px;}
 .tch{padding:8px 13px;border-radius:10px;font-size:9.5px;font-weight:600;background:var(--white);border:1px solid var(--border-c2);color:var(--mid);cursor:pointer;transition:all .2s;box-shadow:var(--shadow-s);}
